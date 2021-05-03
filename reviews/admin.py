@@ -18,7 +18,7 @@ class CoffeeBarAdmin(admin.ModelAdmin):
         (None, {'fields': ['avg_vote']}),
         (None, {'fields': ['address']}),
         (None, {'fields': ['description']}),
-        (None, {'fields': ['created_at'], 'classes': ['collapse']}),
+        (None, {'fields': ['created_at']}),
     ]
     inlines = [MenuInline, ReviewInline]
     list_display = ('name', 'avg_vote')
@@ -30,7 +30,7 @@ class MenuAdmin(admin.ModelAdmin):
         (None, {'fields': ['coffeeBar']}),
         (None, {'fields': ['name']}),
         (None, {'fields': ['price']}),
-        (None, {'fields': ['description'], 'classes': ['collapse']}),
+        (None, {'fields': ['description']}),
     ]
     list_display = ('coffeeBar', 'name', 'price')
     search_fields = ['name']
@@ -42,7 +42,7 @@ class ReviewAdmin(admin.ModelAdmin):
         (None, {'fields': ['user']}),
         (None, {'fields': ['vote']}),
         (None, {'fields': ['description']}),
-        (None, {'fields': ['created_at'], 'classes': ['collapse']}),
+        (None, {'fields': ['created_at']}),
     ]
     list_display = ('coffeeBar', 'vote', 'description')
     search_fields = ['coffeeBar']
@@ -55,7 +55,7 @@ class UserAdmin(admin.ModelAdmin):
         (None, {'fields': ['email']}),
         (None, {'fields': ['phone']}),
         (None, {'fields': ['password']}),
-        (None, {'fields': ['role'], 'classes': ['collapse']}),
+        (None, {'fields': ['role']}),
     ]
     list_display = ('firstName', 'lastName', 'email', 'phone')
     search_fields = ['firstName']
