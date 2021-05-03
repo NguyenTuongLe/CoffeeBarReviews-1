@@ -1,1 +1,6 @@
-{{ coffeeBar }}
+<h1>{{ coffeeBar.name }}</h1>
+<ul>
+{% for review in coffeeBar.review_set.all %}
+    <li>{{ review.description }}</li>
+{% endfor %}
+</ul>
