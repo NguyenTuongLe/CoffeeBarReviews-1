@@ -52,7 +52,7 @@ class Review(models.Model):
     # userId = models.IntegerField
 
     def __str__(self):
-        return self.id
+        return str(self.coffeeBar)
  
     def was_published_recently(self):
         return self.created_at >= timezone.now() - datetime.timedelta(days=1)
