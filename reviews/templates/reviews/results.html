@@ -1,9 +1,28 @@
-<h1>{{ coffeeBar.name }}</h1>
+{% extends "reviews/layout.html" %}
+{% load static %}
+{% load review_extras %}
+{% block head %}
+<link rel="stylesheet" type="text/css" href="{% static 'reviews/style.css' %}">
+{% endblock head %}
 
+{% block content %}
+<div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
+<h1 class="text-black font-bold">{{ coffeeBar.name }}</h1>
 <ul>
-{% for review in coffeeBar.review_set.all %}
-    <li>{{ review.description }} -- {{ review.vote }} vote{{ review.vote|pluralize }}</li>
-{% endfor %}
+	{% for review in coffeeBar.review_set.all %}
+	<div class="my-3">
+				<div class="text-sm">
+					{{ review.description }} ({{review.vote}})
+				</div>
+				<div class="h-3 relative max-w-xl rounded-full overflow-hidden">
+					<div class="w-full h-full bg-gray-200 absolute"></div>
+					<div class="h-full bg-green-500 absolute" style="width:{{ review.vote|divide:coffeeBar.total_votes}}%"></div>
+				</div>
+			</div>
+	{% endfor %}
 </ul>
 
-<a href="{% url 'reviews:detail' coffeeBar.id %}">Bạn muốn đánh giá lại?</a>
+<a href="{% url 'reviews:detail' coffeeBar.id %}">Bạn có muốn đánh giá lại?</a>
+
+</div>
+{% endblock content %}

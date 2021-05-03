@@ -15,7 +15,7 @@ class IndexView(generic.ListView):
 
     def get_queryset(self):
         return CoffeeBar.objects.filter(
-        created_at__lte=timezone.now()
+            created_at__lte=timezone.now()
         ).order_by('-avg_vote')[:10]
 
 

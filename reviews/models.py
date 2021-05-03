@@ -29,6 +29,14 @@ class CoffeeBar(models.Model):
     def was_published_recently(self):
         now = timezone.now()
         return now - datetime.timedelta(days=1) <= self.created_at <= now
+    
+    def total_votes(self):
+        vote = Review.objects.filter(coffeeBar__id__exact=self.id)
+        total = 0
+        for x in vote:
+            total += x.vote
+        return total
+
 
 class Menu(models.Model):
     coffeeBar = models.ForeignKey(CoffeeBar, on_delete=models.CASCADE)
@@ -52,8 +60,11 @@ class Review(models.Model):
     # coffeeBarId = models.IntegerField
     # userId = models.IntegerField
 
+    # def __str__(self):
+    #     return str(self.coffeeBar)
+
     def __str__(self):
-        return str(self.coffeeBar)
+        return self.description
  
     def was_published_recently(self):
         now = timezone.now()

@@ -1,13 +1,38 @@
+{% extends "reviews/layout.html" %}
 {% load static %}
-
+{% load review_extras %}
+{% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'reviews/style.css' %}">
+{% endblock head %}
 
+{% block content %}
+<div class="mb-3">
+	<h1 class="text-5xl text-black font-bold">Coffee Bar Reviews</h1>
+</div>
 {% if latest_coffeeBar_list %}
-    <ul>
-    {% for coffeeBar in latest_coffeeBar_list %}
-        <li><a href="{% url 'reviews:detail' coffeeBar.id %}">{{ coffeeBar.name }}</a></li>
-    {% endfor %}
-    </ul>
+<div class="reviews">
+	{% for coffeeBar in latest_coffeeBar_list %}
+	<div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
+		<h2>
+			<a href="{% url 'reviews:detail' coffeeBar.id %}" class="text-black font-bold">{{ coffeeBar.name }}</a>
+		</h2>
+		<div class="review-votes">
+			{% for review in coffeeBar.review_set.all %}
+			<div class="my-3">
+				<div class="text-sm">
+					{{ review.description }} ({{review.vote}})
+				</div>
+				<div class="h-3 relative max-w-xl rounded-full overflow-hidden">
+					<div class="w-full h-full bg-gray-200 absolute"></div>
+					<div class="h-full bg-green-500 absolute" style="width:{{ review.vote|divide:coffeeBar.total_votes}}%"></div>
+				</div>
+			</div>
+			{% endfor %}
+		</div>
+	</div>
+	{% endfor %}
+</div>
 {% else %}
-    <p>Không có bài đánh giá nào.</p>
+<p>Không có quán cafe nào.</p>
 {% endif %}
+{% endblock content %}
