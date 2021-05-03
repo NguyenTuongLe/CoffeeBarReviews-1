@@ -36,7 +36,7 @@ class Menu(models.Model):
     name = models.CharField(max_length=500)
     price = models.DecimalField(max_digits=10, decimal_places=0)
     image = models.ImageField
-    description = models.TextField(max_length=500)
+    description = models.CharField(max_length=500)
     # coffeeBarId = models.IntegerField
 
     def __str__(self):
@@ -47,7 +47,7 @@ class Review(models.Model):
     coffeeBar = models.ForeignKey(CoffeeBar, on_delete=models.CASCADE)
     id = models.IntegerField
     vote = models.IntegerField(default=5)
-    description = models.TextField(max_length=500)
+    description = models.CharField(max_length=500)
     created_at = models.DateTimeField('date published')
     # coffeeBarId = models.IntegerField
     # userId = models.IntegerField
