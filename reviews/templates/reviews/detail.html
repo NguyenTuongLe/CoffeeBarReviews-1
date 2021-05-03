@@ -1,6 +1,12 @@
 <h1>{{ coffeeBar.name }}</h1>
-<ul>
+
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<form action="{% url 'reviews:vote' coffeeBar.id %}" method="post">
+{% csrf_token %}
 {% for review in coffeeBar.review_set.all %}
-    <li>{{ review.description }}</li>
+    <input type="radio" name="review" id="review{{ forloop.counter }}" value="{{ review.id }}">
+    <label for="review{{ forloop.counter }}">{{ review.vote }}</label><br>
 {% endfor %}
-</ul>
+<input type="submit" value="Vote">
+</form>

@@ -1,0 +1,9 @@
+<h1>{{ coffeeBar.name }}</h1>
+
+<ul>
+{% for review in coffeeBar.review_set.all %}
+    <li>{{ review.description }} -- {{ review.vote }} vote{{ review.vote|pluralize }}</li>
+{% endfor %}
+</ul>
+
+<a href="{% url 'reviews:detail' coffeeBar.id %}">Bạn muốn đánh giá lại?</a>
