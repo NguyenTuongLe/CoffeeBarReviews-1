@@ -2,8 +2,33 @@ body{
     max-width: 800px;
     margin: 40px auto;
     padding: 32px;
+
+
+     /*    background: linear-gradient(45deg,rgba(2,33,64,0.8) 55%,rgba(45,95,93,0.85)), url("images/background.jpeg") no-repeat;
+     background: white;
+     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      background: white url("images/background.jpeg") no-repeat;*/
+}
+/*  */
+/*  */
+/*.shadow-2xl {
+    display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     grid-column-gap: 5em;
+}  */
+
+.shadow-2xl {
+    min-width: 800px;
+    margin: 20px auto;
+    padding: 32px;
     background: white;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+}
+.cont {
+    display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     grid-column-gap: 2em;
 }
 
 .text-5xl{
@@ -11,6 +36,7 @@ body{
     text-align: center;
     color: #E27D60;
 }
+
 .text-black {
     text-decoration: none;
 }
@@ -19,13 +45,13 @@ body{
 }
 .my-3{
     color: red;
-    line-height: 40px;
+    line-height: 30px;
 }
 
 .uppercase {
     font-size: 80px !important;
     text-align: center;
-    color: green;
+    color: #E27D60; /*green*/
 }
 
 h1{
@@ -34,24 +60,32 @@ h1{
 
 .font-bold{
     text-align: center;
-    font-size: 40px;
+    font-size: 48px;
 
 }
 .item{
-    line-height: 40px;
-    text-align: center;
-     display: grid;
-     grid-template-columns: repeat(2, 1fr);
-     grid-column-gap: 1em;
+      line-height: 40px;
 
+      /*text-align: center;*/
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column-gap: 1em;
+      border-bottom: 0.5px dashed #1d3557;
 }
+
+.item_menu {
+    display: flex;
+    flex-direction: column;
+    line-height: 52px;
+}
+
 .name {
-    font-size: 20px;
+    font-size: 42px;
     color: red;
 }
 
 .price{
-    font-size: 20px;
+    font-size: 30px;
     color: red;
 }
 
@@ -59,7 +93,7 @@ h1{
      line-height: 40px;
     margin-left: 360px;
 
-     }
+}
 .mt-3{
     font-size: 24px;
     text-align: center;
@@ -72,7 +106,7 @@ h1{
 }
 
 .result {
-    color: #00bf00;
+    color: #E27D60;
 }
 
 .comment-again{

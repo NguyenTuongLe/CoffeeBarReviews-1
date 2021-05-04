@@ -15,10 +15,15 @@
 {% if latest_coffeeBar_list %}
 <div class="reviews">
 	{% for coffeeBar in latest_coffeeBar_list %}
-	<div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
-		<h2>
+
+	<div class="cont shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
+		<div>
+			<img src="https://bota.vn/wp-content/uploads/2018/11/Highlands-Coffee.jpg" width="300px" height="auto">
+		</div>
+		<div>
+			<h2>
 			<a href="{% url 'reviews:detail' coffeeBar.id %}" class="text-black font-bold">{{ coffeeBar.name }}</a>
-		</h2>
+			</h2>
 		<div class="review-votes">
 			{% for review in coffeeBar.review_set.all %}
 			<div class="my-3">
@@ -32,6 +37,7 @@
 				</div>
 			</div>
 			{% endfor %}
+		</div>
 		</div>
 	</div>
 	{% endfor %}
