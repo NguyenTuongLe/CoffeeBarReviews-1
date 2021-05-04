@@ -3,11 +3,14 @@
 {% load review_extras %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'reviews/style.css' %}">
+<script rel="stylesheet" src="{% static 'reviews/chart.min.js' %}"></script>
+<script rel="stylesheet" src="{% static 'reviews/review.js' %}"></script>
+
 {% endblock head %}
 
 {% block content %}
 <div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
-<h1 class="text-black font-bold">{{ coffeeBar.name }}</h1>
+<h1 class="text-black font-bold result">{{ coffeeBar.name }}</h1>
 <ul>
 	{% for review in coffeeBar.review_set.all %}
 	<div class="my-3">
@@ -22,7 +25,7 @@
 	{% endfor %}
 </ul>
 
-<a href="{% url 'reviews:detail' coffeeBar.id %}">Bạn có muốn đánh giá lại?</a>
+<a class="comment-again" href="{% url 'reviews:detail' coffeeBar.id %}">Bạn có muốn đánh giá lại?</a>
 
 </div>
 {% endblock content %}

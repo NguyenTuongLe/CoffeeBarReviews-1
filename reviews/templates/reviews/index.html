@@ -3,6 +3,9 @@
 {% load review_extras %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'reviews/style.css' %}">
+<script rel="stylesheet" src="{% static 'reviews/chart.min.js' %}"></script>
+<script rel="stylesheet" src="{% static 'reviews/review.js' %}"></script>
+
 {% endblock head %}
 
 {% block content %}
@@ -19,6 +22,7 @@
 		<div class="review-votes">
 			{% for review in coffeeBar.review_set.all %}
 			<div class="my-3">
+<!--				<canvas id="canvas" height="450" width="610"></canvas>-->
 				<div class="text-sm">
 					{{ review.description }} ({{review.vote}})
 				</div>
@@ -32,6 +36,7 @@
 	</div>
 	{% endfor %}
 </div>
+
 {% else %}
 <p>Không có quán cafe nào.</p>
 {% endif %}

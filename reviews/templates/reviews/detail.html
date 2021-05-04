@@ -3,6 +3,9 @@
 {% load review_extras %}
 {% block head %}
 <link rel="stylesheet" type="text/css" href="{% static 'reviews/style.css' %}">
+<script rel="stylesheet" src="{% static 'reviews/chart.min.js' %}"></script>
+<script rel="stylesheet" src="{% static 'reviews/review.js' %}"></script>
+
 {% endblock head %}
 
 {% block content %}
@@ -13,10 +16,10 @@
 	
 		{% csrf_token %}
 		{% for menu in coffeeBar.menu_set.all %}
-		<div>
+		<div class="item">
 			{% comment %} <input type="radio" name="menu" id="menu{{ forloop.counter }}" value="{{ menu.id }}"> {% endcomment %}
-			<label for="menu{{ forloop.counter }}">{{ menu.name }}</label>
-			<label for="menu{{ forloop.counter }}">{{ menu.price }}đ</label><br>
+			<label class="name" for="menu{{ forloop.counter }}">{{ menu.name }}</label>
+			<label class="price" for="menu{{ forloop.counter }}">{{ menu.price }}đ</label><br>
 		</div>
 		{% endfor %}
 
@@ -29,7 +32,7 @@
 	<form action="{% url 'reviews:vote' coffeeBar.id %}" method="post">
 		{% csrf_token %}
 		{% for review in coffeeBar.review_set.all %}
-		<div>
+		<div class="comment">
 			<input type="radio" name="review" id="review{{ forloop.counter }}" value="{{ review.id }}">
 			<label for="review{{ forloop.counter }}">{{ review.description }}</label><br>
 		</div>

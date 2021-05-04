@@ -1,3 +1,82 @@
 body{
-    background: rgb(250,250,250);
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 32px;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-5xl{
+    font-size: 80px !important;
+    text-align: center;
+    color: #E27D60;
+}
+.text-black {
+    text-decoration: none;
+}
+.review-votes {
+
+}
+.my-3{
+    color: red;
+    line-height: 40px;
+}
+
+.uppercase {
+    font-size: 80px !important;
+    text-align: center;
+    color: green;
+}
+
+h1{
+ color: #1d3557;
+}
+
+.font-bold{
+    text-align: center;
+    font-size: 40px;
+
+}
+.item{
+    line-height: 40px;
+    text-align: center;
+     display: grid;
+     grid-template-columns: repeat(2, 1fr);
+     grid-column-gap: 1em;
+
+}
+.name {
+    font-size: 20px;
+    color: red;
+}
+
+.price{
+    font-size: 20px;
+    color: red;
+}
+
+.comment {
+     line-height: 40px;
+    margin-left: 360px;
+
+     }
+.mt-3{
+    font-size: 24px;
+    text-align: center;
+    background-color: #E27D60;
+    padding: 10px 20px;
+    color: white;
+    margin-left: 350px;
+    margin-top: 50px;
+    transition: all 0.5s ease-in;
+}
+
+.result {
+    color: #00bf00;
+}
+
+.comment-again{
+    text-decoration: none;
+    margin-left: 36px;
+    font-size: 20px;
 }
