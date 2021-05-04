@@ -6,8 +6,24 @@
 {% endblock head %}
 
 {% block content %}
+<h1 class="text-black font-bold uppercase ">{{ coffeeBar.name }}</h1><br>
 <div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
-	<h1 class="text-black font-bold">{{ coffeeBar.name }}</h1>
+	<h1 class="text-black font-bold">Menu</h1>
+	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+	
+		{% csrf_token %}
+		{% for menu in coffeeBar.menu_set.all %}
+		<div>
+			{% comment %} <input type="radio" name="menu" id="menu{{ forloop.counter }}" value="{{ menu.id }}"> {% endcomment %}
+			<label for="menu{{ forloop.counter }}">{{ menu.name }}</label>
+			<label for="menu{{ forloop.counter }}">{{ menu.price }}đ</label><br>
+		</div>
+		{% endfor %}
+
+</div>
+
+<div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
+	<h1 class="text-black font-bold">Đánh giá</h1>
 	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 	
 	<form action="{% url 'reviews:vote' coffeeBar.id %}" method="post">
@@ -22,3 +38,4 @@
 	</form>
 </div>
 {% endblock content %}
+
