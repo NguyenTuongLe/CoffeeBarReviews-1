@@ -12,7 +12,6 @@
 <h1 class="text-black font-bold uppercase ">{{ coffeeBar.name }}</h1><br>
 
 <div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
-	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 	<div>
 		<p class="address">Địa chỉ: {{ coffeeBar.address }}</p>
 		<p class="vote">Đánh giá: {{ coffeeBar.avg_vote }}</p>
@@ -22,8 +21,6 @@
 
 <div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
 	<h1 class="text-black font-bold">Menu</h1>
-	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-	
 		{% csrf_token %}
 		{% for menu in coffeeBar.menu_set.all %}
 		<div class="item">
