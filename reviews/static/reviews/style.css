@@ -72,7 +72,7 @@ h1{
 .font-bold{
     text-align: center;
     font-size: 54px;
-    margin-top: -10px;
+    margin-top: -10px !important;
 }
 .item{
       line-height: 40px;
@@ -89,10 +89,23 @@ h1{
     border-top: 0.5px outset #f7f3f5;
 }
 
+
+.coffee-img {
+    margin: 20px auto;
+}
+
+/*.img-item{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+}*/
+
 .item_menu {
     display: flex;
     flex-direction: column;
-    line-height: 52px;
+    line-height: 34px;
+    margin-top: 16px;
 }
 
 .name {
@@ -102,9 +115,10 @@ h1{
 .description{
     font-size: 24px;
     color: #a59aa0;
+
 }
 
-.price, .address, .vote{
+.price, .address, .vote, .coffee-bar-description{
     font-size: 24px;
 }
 
