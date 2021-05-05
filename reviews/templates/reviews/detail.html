@@ -23,7 +23,8 @@
 			<div class="item_menu">
 				{% comment %} <input type="radio" name="menu" id="menu{{ forloop.counter }}" value="{{ menu.id }}"> {% endcomment %}
 				<label class="name" for="menu{{ forloop.counter }}">{{ menu.name }}</label>
-				<label class="price" for="menu{{ forloop.counter }}">{{ menu.price }}đ</label><br>
+				<label class="description" for="menu{{ forloop.counter }}">{{ menu.description }}</label>
+				<label class="price" for="menu{{ forloop.counter }}">{{ menu.price }}đ</label>
 			</div>
 		</div>
 		{% endfor %}
