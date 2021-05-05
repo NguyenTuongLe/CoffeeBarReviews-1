@@ -40,6 +40,11 @@ body{
 .text-black {
     text-decoration: none;
 }
+
+.coffee-name{
+     color: #1d3557;
+}
+
 .review-votes {
 
 }
@@ -61,11 +66,11 @@ h1{
 .font-bold{
     text-align: center;
     font-size: 48px;
-
+    margin-top: -10px;
 }
 .item{
       line-height: 40px;
-
+        color: #1d3557;
       /*text-align: center;*/
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -85,13 +90,11 @@ h1{
 }
 
 .name {
-    font-size: 42px;
-    color: red;
+    font-size: 36px;
 }
 
 .price{
-    font-size: 30px;
-    color: red;
+    font-size: 24px;
 }
 
 .comment {
@@ -112,6 +115,7 @@ h1{
 
 .result {
     color: #E27D60;
+    font-size: 80px;
 }
 
 .comment-again{
