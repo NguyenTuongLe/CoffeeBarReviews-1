@@ -70,7 +70,12 @@ h1{
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       grid-column-gap: 1em;
-      border-bottom: 0.5px dashed #1d3557;
+      padding-top: 15px;
+      /* border-bottom: 0.5px dashed #1d3557; */
+      /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+.item:not(:first-child){
+    border-top: 0.5px outset #f7f3f5;
 }
 
 .item_menu {

@@ -24,19 +24,9 @@
 			<h2>
 			<a href="{% url 'reviews:detail' coffeeBar.id %}" class="text-black font-bold">{{ coffeeBar.name }}</a>
 			</h2>
-		<div class="review-votes">
-			{% for review in coffeeBar.review_set.all %}
-			<div class="my-3">
-<!--				<canvas id="canvas" height="450" width="610"></canvas>-->
-				<div class="text-sm">
-					{{ review.description }} ({{review.vote}})
-				</div>
-				<div class="h-3 relative max-w-xl rounded-full overflow-hidden">
-					<div class="w-full h-full bg-gray-200 absolute"></div>
-					<div class="h-full bg-green-500 absolute" style="width:{{ review.vote|divide:coffeeBar.total_votes}}%"></div>
-				</div>
-			</div>
-			{% endfor %}
+		<div>
+			<p class="address">Địa chỉ: {{ coffeeBar.address }}</p>
+			<p class="vote">Đánh giá: {{ coffeeBar.avg_vote }}</p>
 		</div>
 		</div>
 	</div>
