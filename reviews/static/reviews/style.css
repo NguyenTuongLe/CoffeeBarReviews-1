@@ -1,5 +1,5 @@
 body{
-    max-width: 800px;
+    max-width: 1200px;
     margin: 40px auto;
     padding: 32px;
 
@@ -18,7 +18,7 @@ body{
 }  */
 
 .shadow-2xl {
-    min-width: 800px;
+    max-width: 1050px;
     margin: 20px auto;
     padding: 32px;
     background: white;
@@ -28,7 +28,7 @@ body{
 .cont {
     display: grid;
      grid-template-columns: repeat(2, 1fr);
-     grid-column-gap: 2em;
+     grid-column-gap: 1em;
 }
 
 .text-5xl{
@@ -42,14 +42,15 @@ body{
 }
 
 .coffee-name{
-     color: #1d3557;
+    color: #1d3557;
+    display: inline-block;
+    margin-top: -25px !important;
 }
 
 .review-votes {
 
 }
 .my-3{
-    color: red;
     line-height: 30px;
 }
 
@@ -59,13 +60,18 @@ body{
     color: #E27D60; /*green*/
 }
 
+.coffee-bar-description {
+    line-height: 140%;
+  /*  font-style: italic;*/
+}
+
 h1{
  color: #1d3557;
 }
 
 .font-bold{
     text-align: center;
-    font-size: 48px;
+    font-size: 54px;
     margin-top: -10px;
 }
 .item{
@@ -98,13 +104,13 @@ h1{
     color: #a59aa0;
 }
 
-.price, .address, .vote, .coffee-bar-description{
+.price, .address, .vote{
     font-size: 24px;
 }
 
 .comment {
      line-height: 40px;
-    margin-left: 360px;
+    margin-left: 44%;
 
 }
 .mt-3{
@@ -116,6 +122,7 @@ h1{
     margin-left: 350px;
     margin-top: 50px;
     transition: all 0.5s ease-in;
+    margin-left: 44%;
 }
 
 .result {
