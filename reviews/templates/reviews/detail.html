@@ -45,6 +45,7 @@
 			<div class="item">
 				<label class="user-name" for="review{{ forloop.counter }}">{{ review.user.lastName }} {{ review.user.firstName }}</label>
 				<label class="description" for="review{{ forloop.counter }}">{{ review.description }}</label>
+				<label class="time" for="review{{ forloop.counter }}">{{ review.created_at }}</label>
 			</div>
 		{% endfor %}
 

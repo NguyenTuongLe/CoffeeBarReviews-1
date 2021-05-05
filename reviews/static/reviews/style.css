@@ -105,7 +105,7 @@ h1{
 .item_menu {
     display: flex;
     flex-direction: column;
-    line-height: 34px;
+    line-height: 36px;
     margin-top: 16px;
 }
 
@@ -116,7 +116,11 @@ h1{
 .description{
     font-size: 24px;
     color: #a59aa0;
+}
 
+.time{
+    font-size: 20px;
+    color: #a59aa0;
 }
 
 .price, .address, .vote, .coffee-bar-description, .user-name{
