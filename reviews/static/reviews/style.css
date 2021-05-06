@@ -105,7 +105,7 @@ h1{
 .item_menu {
     display: flex;
     flex-direction: column;
-    line-height: 36px;
+    line-height: 39px;
     margin-top: 16px;
 }
 
