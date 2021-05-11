@@ -17,6 +17,7 @@ class CoffeeBarAdmin(admin.ModelAdmin):
         (None, {'fields': ['name']}),
         (None, {'fields': ['avg_vote']}),
         (None, {'fields': ['address']}),
+        (None, {'fields': ['image']}),
         (None, {'fields': ['description']}),
         (None, {'fields': ['created_at']}),
     ]
@@ -30,6 +31,7 @@ class MenuAdmin(admin.ModelAdmin):
         (None, {'fields': ['coffeeBar']}),
         (None, {'fields': ['name']}),
         (None, {'fields': ['price']}),
+        (None, {'fields': ['image']}),
         (None, {'fields': ['description']}),
     ]
     list_display = ('coffeeBar', 'name', 'price')

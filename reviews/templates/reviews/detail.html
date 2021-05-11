@@ -25,7 +25,7 @@
 		{% for menu in coffeeBar.menu_set.all %}
 		<div class="item">
 			<div class="coffee-img">
-			<img class="img-item" src="https://bota.vn/wp-content/uploads/2018/11/Highlands-Coffee.jpg" width="250px" height="auto">
+			<img class="img-item" src="{{ menu.image }}" width="250px" height="auto">
 			</div>
 			<div class="item_menu">
 				{% comment %} <input type="radio" name="menu" id="menu{{ forloop.counter }}" value="{{ menu.id }}"> {% endcomment %}

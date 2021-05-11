@@ -22,6 +22,7 @@ class CoffeeBar(models.Model):
     address = models.CharField(max_length=500)
     avg_vote = models.DecimalField(max_digits=3, decimal_places=1)
     created_at = models.DateTimeField('date published')
+    image = models.CharField(max_length=500)
 
     def __str__(self):
         return self.name
@@ -45,6 +46,7 @@ class Menu(models.Model):
     price = models.DecimalField(max_digits=10, decimal_places=0)
     image = models.ImageField
     description = models.CharField(max_length=500)
+    image = models.CharField(max_length=500)
     # coffeeBarId = models.IntegerField
 
     def __str__(self):
