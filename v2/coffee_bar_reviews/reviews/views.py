@@ -1,4 +1,4 @@
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, authenticate, logout
 from django.shortcuts import render, redirect
 from .models import CoffeeBar
 from .forms import SignUpForm
@@ -9,7 +9,8 @@ from django.contrib.auth.forms import AuthenticationForm
 def coffee_bars_list_view(request):
     coffee_bars = CoffeeBar.objects.order_by("-created_at").all()
     context = {
-        "list": coffee_bars
+        "list": coffee_bars,
+        "auth": request.user,
     }
     return render(request, "reviews/coffee_bars.html", context)
 
@@ -40,3 +41,9 @@ def login_view(request):
     else:
         form = AuthenticationForm()
     return render(request, 'reviews/login.html', {'form': form})
+
+
+# Logout view
+def logout_view(request):
+    logout(request)
+    return redirect('/reviews')
