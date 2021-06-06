@@ -6,7 +6,8 @@
     <h1>{{ coffeeBar.name }}</h1><br>
 </div>
 
-<div>
+
+<div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
 	<div>
 		<p class="address">Địa chỉ: {{ coffeeBar.address }}</p>
 		<p class="vote">Đánh giá: {{ coffeeBar.avg_vote }}</p>
@@ -14,13 +15,14 @@
 	</div>
 </div>
 
-{% comment %} <div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
+
+ <div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
 	<h1 class="text-black font-bold">Menu</h1>
 		{% csrf_token %}
 		{% for menu in coffeeBar.menu_set.all %}
 		<div class="item">
 			<div class="coffee-img">
-			<img class="img-item" src="{{ menu.image }}" width="250px" height="auto">
+            <img class="img-item" src="{{ menu.image.url }}" width="100px" height="auto">
 			</div>
 			<div class="item_menu">
 				<label class="name" for="menu{{ forloop.counter }}">{{ menu.name }}</label>
@@ -32,6 +34,7 @@
 
 </div>
 
+{% comment %}
 <div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
 	<h1 class="text-black font-bold">Nhận xét</h1>
 		{% csrf_token %}
@@ -44,6 +47,7 @@
 		{% endfor %}
 
 </div>
+
 
 <div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
 <h1 class="text-black font-bold">Đánh giá</h1>
