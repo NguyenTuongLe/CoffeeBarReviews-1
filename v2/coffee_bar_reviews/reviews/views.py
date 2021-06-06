@@ -12,7 +12,7 @@ def coffee_bars_list_view(request):
         "list": coffee_bars,
         "auth": request.user,
     }
-    return render(request, "reviews/coffee_bars.html", context)
+    return render(request, 'reviews/coffee_bars.html', context)
 
 
 # register view
