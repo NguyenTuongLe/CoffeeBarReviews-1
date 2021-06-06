@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
     {% if list %}
         <div class="reviews">
@@ -10,9 +9,9 @@
                     <img class="img-item" src="{{ coffeeBar.image.url }}" width="100px" height="auto">
                 </div>
                 <div>
-                    {% comment %} <h2>
-                    <a href="{% url 'reviews:coffee_bar_detail' coffeeBar.id %}" class="coffee-name text-black font-bold">{{ coffeeBar.name }}</a>
-                    </h2> {% endcomment %}
+                    <h2>
+                    {% comment %} <a href="{% url 'reviews:coffee_bars_detail' coffeeBar.id %}">{{ coffeeBar.name }}</a> {% endcomment %}
+                    </h2> 
                     <div>
                         <p class="address">Địa chỉ: {{ coffeeBar.address }}</p>
                         <p class="vote">Đánh giá: {{ coffeeBar.avg_vote }}</p>

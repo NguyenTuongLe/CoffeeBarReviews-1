@@ -1,10 +1,13 @@
 from django.contrib.auth import login, authenticate, logout
-from django.shortcuts import render, redirect
+from django.http.response import Http404
+from django.shortcuts import render, redirect, get_object_or_404
 from .models import CoffeeBar
 from .forms import SignUpForm
 from django.contrib.auth.forms import AuthenticationForm
+from django.views import generic
+from django.utils import timezone
 
-
+        
 # coffee bars list view
 def coffee_bars_list_view(request):
     coffee_bars = CoffeeBar.objects.order_by("-created_at").all()
@@ -14,6 +17,12 @@ def coffee_bars_list_view(request):
     }
     return render(request, 'reviews/coffee_bars.html', context)
 
+
+# coffee bars detail
+def coffee_bars_detail(request, coffeeBar_id):
+    coffeeBar = get_object_or_404(CoffeeBar, pk=coffeeBar_id)
+    return render(request, 'reviews/coffee_bars_detail.html', {'coffeeBar': coffeeBar})
+  
 
 # register view
 def register_view(request):
