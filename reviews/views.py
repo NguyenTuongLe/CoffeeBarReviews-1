@@ -1,7 +1,7 @@
 from django.contrib.auth import login, authenticate, logout
 from django.http.response import Http404
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import CoffeeBar
+from .models import CoffeeBar, Review
 from .forms import SignUpForm, ReviewForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.views import generic
@@ -19,17 +19,31 @@ def coffee_bars_list_view(request):
 
 
 # coffee bars detail
-def coffee_bars_detail(request, coffeeBar_id):
-    coffeeBar = get_object_or_404(CoffeeBar, pk=coffeeBar_id)
+def coffee_bars_detail(request, coffee_bar_id):
+    coffee_bar = get_object_or_404(CoffeeBar, pk=coffee_bar_id)
+    reviews = coffee_bar.review_set.all()
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
-            print("doing")
+            description = form.cleaned_data['description']
+            rating = form.cleaned_data['rating']
+            r = Review(author=request.user, coffee_bar=coffee_bar, vote=rating, description=description)
+            r.save()
+
+            count = 1
+            voted = int(rating)
+            for review in reviews:
+                voted += review.vote
+                count += 1
+            coffee_bar.avg_vote = round(voted / count, 1)
+            coffee_bar.save()
+
     else:
         form = ReviewForm()
 
     context = {
-        'coffeeBar': coffeeBar,
+        'coffee_bar': coffee_bar,
+        'reviews': reviews,
         "auth": request.user,
         "form": form
     }

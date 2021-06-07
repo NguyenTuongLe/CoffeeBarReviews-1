@@ -2,16 +2,16 @@
 
 {% block content %}
 <div>
-    <img class="img-item" src="{{ coffeeBar.image.url }}" width="100px" height="auto">
-    <h1>{{ coffeeBar.name }}</h1><br>
+    <img class="img-item" src="{{ coffee_bar.image.url }}" width="100px" height="auto">
+    <h1>{{ coffee_bar.name }}</h1><br>
 </div>
 
 
 <div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
 	<div>
-		<p class="address">Địa chỉ: {{ coffeeBar.address }}</p>
-		<p class="vote">Đánh giá: {{ coffeeBar.avg_vote }}</p>
-		<p class="coffee-bar-description">{{ coffeeBar.description }}</p>
+		<p class="address">Địa chỉ: {{ coffee_bar.address }}</p>
+		<p class="vote">Đánh giá: {{ coffee_bar.avg_vote }}</p>
+		<p class="coffee-bar-description">{{ coffee_bar.description }}</p>
 	</div>
 </div>
 
@@ -19,7 +19,7 @@
  <div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
 	<h1 class="text-black font-bold">Menu</h1>
 		{% csrf_token %}
-		{% for menu in coffeeBar.menu_set.all %}
+		{% for menu in coffee_bar.menu_set.all %}
 		<div class="item">
 			<div class="coffee-img">
             <img class="img-item" src="{{ menu.image.url }}" width="100px" height="auto">
@@ -38,8 +38,8 @@
 <div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
 	<h1 class="text-black font-bold">Nhận xét</h1>
 		{% csrf_token %}
-		{% if coffeeBar.review_set.all %}
-			{% for review in coffeeBar.review_set.all %}
+		{% if reviews %}
+			{% for review in reviews %}
 				<div class="item">
 					<label class="user-name" for="review{{ forloop.counter }}">{{ review.author.last_name }} {{ review.author.first_name }}</label>
 					<label class="vote" for="review{{ forloop.counter }}">{{ review.vote }} sao</label>

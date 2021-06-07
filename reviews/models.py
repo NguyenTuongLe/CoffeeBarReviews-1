@@ -19,7 +19,6 @@ class CoffeeBar(models.Model):
     avg_vote = models.DecimalField(max_digits=3, decimal_places=1, default=0)
     created_at = models.DateTimeField(auto_now_add=True)
 
-
 class Menu(models.Model):
     coffee_bar = models.ForeignKey(CoffeeBar, on_delete=models.CASCADE)
     name = models.CharField(null=False, blank=False, max_length=255)
