@@ -23,7 +23,7 @@ class CoffeeBar(models.Model):
 class Menu(models.Model):
     coffee_bar = models.ForeignKey(CoffeeBar, on_delete=models.CASCADE)
     name = models.CharField(null=False, blank=False, max_length=255)
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=0)
     image = models.ImageField(upload_to='menus', null=True, blank=True)
     description = models.CharField(null=True, max_length=255, blank=True)
 

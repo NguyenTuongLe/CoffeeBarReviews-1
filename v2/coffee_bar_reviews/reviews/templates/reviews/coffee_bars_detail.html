@@ -38,14 +38,17 @@
 <div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
 	<h1 class="text-black font-bold">Nhận xét</h1>
 		{% csrf_token %}
-		{% for review in coffeeBar.review_set.all %}
-			<div class="item">
-				<label class="user-name" for="review{{ forloop.counter }}">{{ review.author.last_name }} {{ review.author.first_name }}</label>
-				<label class="description" for="review{{ forloop.counter }}">{{ review.description }}</label>
-				<label class="time" for="review{{ forloop.counter }}">{{ review.created_at }}</label>
-            </div>
-		{% endfor %}
-
+		{% if coffeeBar.review_set.all %}
+			{% for review in coffeeBar.review_set.all %}
+				<div class="item">
+					<label class="user-name" for="review{{ forloop.counter }}">{{ review.author.last_name }} {{ review.author.first_name }}</label>
+					<label class="description" for="review{{ forloop.counter }}">{{ review.description }}</label>
+					<label class="time" for="review{{ forloop.counter }}">{{ review.created_at }}</label>
+				</div>
+			{% endfor %}
+		{% else %}
+        	<p>Không có nhận xét nào.</p>
+    {% endif %}
 </div>
 
 {% comment %}
