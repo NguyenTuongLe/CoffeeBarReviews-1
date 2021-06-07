@@ -17,3 +17,21 @@ class SignUpForm(UserCreationForm):
         if User.objects.filter(email=data).exists():
             raise forms.ValidationError("This email already used")
         return data
+
+
+class ReviewForm(forms.Form):
+    CHOICES = (
+        (1, "1 star"),
+        (2, "2 stars"),
+        (3, "3 stars"),
+        (4, "4 stars"),
+        (5, "5 stars"),
+    )
+    rating = forms.ChoiceField(label='Rating', choices=CHOICES, initial=5)
+    description = forms.CharField(label='Comment', required=False, widget=forms.Textarea())
+
+    def clean_description(self):
+        data = self.cleaned_data['description']
+        if not data:
+            raise forms.ValidationError("Your review is required")
+        return data

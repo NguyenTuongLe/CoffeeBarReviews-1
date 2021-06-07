@@ -52,21 +52,52 @@
     {% endif %}
 </div>
 
-{% comment %}
+ {% if auth.is_authenticated %}
 <div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
 <h1 class="text-black font-bold">Đánh giá</h1>
 	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-	<form action="{% url 'reviews:vote' coffeeBar.id %}" method="post">
-		{% csrf_token %}
-		{% for review in coffeeBar.review_set.all %}
-		<div class="comment">
-			<input type="radio" name="review" id="review{{ forloop.counter }}" value="{{ review.id }}">
-			<label for="review{{ forloop.counter }}">{{ review.description }}</label><br>
-		</div>
-		{% endfor %}
-		<input type="submit" value="Vote" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-1 px-4 rounded mt-3">
-	</form>
-</div> {% endcomment %}
+	<form method="post">
+        {% csrf_token %}
+        {% if form.errors %}
+            <div class="notification is-danger">
+                <ul>
+                    {% for key, value in form.errors.items %}
+
+                        <li>
+                            {{ value }}
+                        </li>
+
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+        {% for field in form %}
+            <div class="field">
+                <label class="label is-small">
+                    {{ field.label_tag }}
+                </label>
+                <div class="control">
+                    {{ field }}
+                </div>
+                {% if field.help_text %}
+                    <p class="help">{{ field.help_text }}</p>
+                {% endif %}
+                {% for error in field.errors %}
+                    <p class="help is-danger">{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <div class="field is-grouped">
+            <div class="control">
+                <button type="submit" class="button is-primary is-small">Write review</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% else %}
+<p><a href="{% url 'reviews:login' %}">Log in</a> to write review
+</p>
+{% endif %}
 
 {% endblock content %}
 
