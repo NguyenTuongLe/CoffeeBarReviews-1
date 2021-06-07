@@ -1,12 +1,10 @@
 # Tên sản phẩm và các chức năng chính
 
-## Tên sản phẩm
-
-Coffee Bar Review
+## Tên sản phẩm: Coffee Bar Review
 
 ## Chức năng
 
-Coffee bar review là 1 ứng dụng để khách hàng có thể tạo tài khoản, đăng nhập và đánh giá các quán cafe. 
+Coffee Bar Review là 1 ứng dụng để khách hàng có thể tạo tài khoản, đăng nhập và đánh giá các quán cafe. 
 
 Ứng dụng hiển thị thông tin các quán cafe theo mức độ đánh giá của khách hàng, quán nào được đánh giá cao hơn sẽ hiển thị lên trên.
 
@@ -45,6 +43,9 @@ Vào terminal gõ lệnh:
 
 ```
 cd v2\coffee_bar_reviews
+```
+
+```
 python manage.py runserver 
 ```
 
@@ -53,6 +54,7 @@ python manage.py runserver
 http://127.0.0.1:8000/admin/
 
 Username: admin
+
 Password: admin
 
 ## Trang review
