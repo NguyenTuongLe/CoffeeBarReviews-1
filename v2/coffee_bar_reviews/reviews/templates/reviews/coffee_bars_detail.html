@@ -42,6 +42,7 @@
 			{% for review in coffeeBar.review_set.all %}
 				<div class="item">
 					<label class="user-name" for="review{{ forloop.counter }}">{{ review.author.last_name }} {{ review.author.first_name }}</label>
+					<label class="vote" for="review{{ forloop.counter }}">{{ review.vote }} sao</label>
 					<label class="description" for="review{{ forloop.counter }}">{{ review.description }}</label>
 					<label class="time" for="review{{ forloop.counter }}">{{ review.created_at }}</label>
 				</div>
