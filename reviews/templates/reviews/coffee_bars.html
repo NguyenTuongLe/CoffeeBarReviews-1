@@ -1,4 +1,59 @@
-{% extends 'base.html' %}
+{% comment %} {% extends 'base.html' %} {% endcomment %}
+
+{% load static %}
+
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'reviews/style.css' %}">
+{% endblock head %}
+
+<section class="header">
+    <nav class="bd-navbar navbar is-light" role="navigation" aria-label="main navigation">
+        <div class="container">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="{% url 'reviews:home' %}">
+                    <p class="title">Coffee Reviews</p>
+                </a>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
+                   data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="{% url 'reviews:home' %}">
+                        All coffee bars
+                    </a>
+                </div>
+                <div class="navbar-end">
+                    <div class="navbar-item">
+                        {% if auth.is_authenticated %}
+                            <div class="buttons">
+                                <a class="button is-light is-link is-small">
+                                    <strong>{{ auth.first_name }} {{ auth.last_name }}</strong>
+                                </a>
+                                <a class="button is-primary is-small" href="{% url 'reviews:logout' %}">
+                                    Sign out
+                                </a>
+                            </div>
+                        {% else %}
+                            <div class="buttons">
+                                <a class="button is-primary is-small" href="{% url 'reviews:register' %}">
+                                    <strong>Sign up</strong>
+                                </a>
+                                <a class="button is-light is-small" href="{% url 'reviews:login' %}">
+                                    Log in
+                                </a>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+    </div>
+</section>
 
 {% block content %}
     {% if list %}
@@ -6,7 +61,7 @@
             {% for coffeeBar in list %}
             <div class="cont shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
                 <div class="coffee-img">
-                    <img class="img-item" src="{{ coffeeBar.image.url }}" width="100px" height="auto">
+                    <img class="img-item" src="{{ coffeeBar.image.url }}" width="200px" height="auto">
                 </div>
                 <div>
                     <h2>

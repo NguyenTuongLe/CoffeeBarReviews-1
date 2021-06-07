@@ -21,14 +21,14 @@ class SignUpForm(UserCreationForm):
 
 class ReviewForm(forms.Form):
     CHOICES = (
-        (1, "1 star"),
-        (2, "2 stars"),
-        (3, "3 stars"),
-        (4, "4 stars"),
-        (5, "5 stars"),
+        (1, "1 sao"),
+        (2, "2 sao"),
+        (3, "3 sao"),
+        (4, "4 sao"),
+        (5, "5 sao"),
     )
-    rating = forms.ChoiceField(label='Rating', choices=CHOICES, initial=5)
-    description = forms.CharField(label='Comment', required=False, widget=forms.Textarea())
+    rating = forms.ChoiceField(label='Đánh giá', choices=CHOICES, initial=5)
+    description = forms.CharField(label='Nhận xét', required=False, widget=forms.Textarea())
 
     def clean_description(self):
         data = self.cleaned_data['description']
