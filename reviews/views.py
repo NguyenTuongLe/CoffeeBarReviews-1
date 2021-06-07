@@ -1,63 +1,58 @@
-from django.http import HttpResponse, HttpResponseRedirect
-from django.template import loader
-from django.shortcuts import get_object_or_404, render
-from django.http import Http404
-from django.urls import reverse
+from django.contrib.auth import login, authenticate, logout
+from django.http.response import Http404
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import CoffeeBar
+from .forms import SignUpForm
+from django.contrib.auth.forms import AuthenticationForm
 from django.views import generic
 from django.utils import timezone
 
-from .models import User, CoffeeBar, Menu, Review
+        
+# coffee bars list view
+def coffee_bars_list_view(request):
+    coffee_bars = CoffeeBar.objects.order_by("-avg_vote").all()
+    context = {
+        "list": coffee_bars,
+        "auth": request.user,
+    }
+    return render(request, 'reviews/coffee_bars.html', context)
 
 
-class IndexView(generic.ListView):
-    template_name = 'reviews/index.html'
-    context_object_name = 'latest_coffeeBar_list'
-
-    def get_queryset(self):
-        return CoffeeBar.objects.filter(
-            created_at__lte=timezone.now()
-        ).order_by('-avg_vote')[:10]
-
-
-class DetailView(generic.DetailView):
-    model = CoffeeBar
-    template_name = 'reviews/detail.html'
-
-    def get_queryset(self):
-        return CoffeeBar.objects.filter(created_at__lte=timezone.now())
-
-
-class ResultsView(generic.DetailView):
-    model = CoffeeBar
-    template_name = 'reviews/results.html'
-
-
-def index(request):
-    latest_coffeeBar_list = CoffeeBar.objects.order_by('-avg_vote')[:10]
-    context = {'latest_coffeeBar_list': latest_coffeeBar_list}
-    return render(request, 'reviews/index.html', context)
-
-
-def detail(request, coffeeBar_id):
+# coffee bars detail
+def coffee_bars_detail(request, coffeeBar_id):
     coffeeBar = get_object_or_404(CoffeeBar, pk=coffeeBar_id)
-    return render(request, 'reviews/detail.html', {'coffeeBar': coffeeBar})
+    return render(request, 'reviews/coffee_bars_detail.html', {'coffeeBar': coffeeBar, "auth": request.user})
   
 
-def results(request, coffeeBar_id):
-    coffeeBar = get_object_or_404(CoffeeBar, pk=coffeeBar_id)
-    return render(request, 'reviews/results.html', {'coffeeBar': coffeeBar})
-
-
-def vote(request, coffeeBar_id):
-    coffeeBar = get_object_or_404(CoffeeBar, pk=coffeeBar_id)
-    try:
-        selected_review = coffeeBar.review_set.get(pk=request.POST['review'])
-    except (KeyError, Review.DoesNotExist):
-        return render(request, 'reviews/detail.html', {
-            'coffeeBar': coffeeBar,
-            'error_message': "Bạn chưa đánh giá quán.",
-        })
+# register view
+def register_view(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('/reviews')
     else:
-        selected_review.vote += 1
-        selected_review.save()
-        return HttpResponseRedirect(reverse('reviews:results', args=(coffeeBar.id,)))
+        form = SignUpForm()
+    return render(request, 'reviews/register.html', {'form': form})
+
+
+# Login view
+def login_view(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            login(request, form.user_cache)
+            return redirect('/reviews')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'reviews/login.html', {'form': form})
+
+
+# Logout view
+def logout_view(request):
+    logout(request)
+    return redirect('/reviews')
