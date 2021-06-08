@@ -151,3 +151,52 @@ h1{
     margin-left: 36px;
     font-size: 20px;
 }
+
+/*coffee-bar-detail*/
+.coffee-bar-detail{
+    display: flex;
+    justify-content: space-between;
+
+}
+.name-coffee-bar-detail {
+    font-size: 50px;
+}
+
+.comment {
+    text-align: center;
+    outline: none;
+    padding: 10px;
+
+    margin-left: 30px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.btn {
+    text-decoration: none;
+    color: white;
+    background-color: #e67e22;
+    padding: 15px 30px;
+    border-radius: 20px;
+    margin: 0 5px;
+    width: 190px;
+    display: inline-block;
+    text-align: center;
+    transition: all .3s;
+
+}
+
+#id_description {
+    width: 70%;
+    height: 150px;
+}
+
+/*padding: 0px 120px;
+margin-left: 400px;
+    background-color: rgba(48,47, 47, 0.3);
+    border: 1px solid rgba(78,68, 68, 0.7);*/
+
+#submit-btn-id{
+    text-align: center;
+    margin-left: 40%;
+    margin-right: 60%;
+}
