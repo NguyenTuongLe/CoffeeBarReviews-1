@@ -14,7 +14,7 @@
     <header class="">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
-          <a class="navbar-brand" href="coffee_bars.html"><h2>{{ coffee_bar.name }}</h2></a>
+          <a class="navbar-brand"><h2>{{ coffee_bar.name }}</h2></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -62,13 +62,12 @@
 
 {% block content %}
 <div>
-    {% comment %} <img class="img-item" src="{{ coffee_bar.image.url }}" width="100px" height="auto"> {% endcomment %}
     <h1>{{ coffee_bar.name }}</h1><br>
 </div>
 
 
 <div id="about_id" class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
-	<div>
+	<div >
 		<p class="address">Địa chỉ: {{ coffee_bar.address }}</p>
 		<p class="vote">Đánh giá: {{ coffee_bar.avg_vote }}</p>
 		<p class="coffee-bar-description">{{ coffee_bar.description }}</p>
