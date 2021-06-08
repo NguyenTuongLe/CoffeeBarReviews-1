@@ -10,7 +10,7 @@ from django.utils import timezone
 
 # coffee bars list view
 def coffee_bars_list_view(request):
-    coffee_bars = CoffeeBar.objects.order_by("-avg_vote").all()
+    coffee_bars = CoffeeBar.objects.order_by("-avg_vote")[:10]
     context = {
         "list": coffee_bars,
         "auth": request.user,

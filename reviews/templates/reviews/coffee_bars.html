@@ -3,7 +3,7 @@
 {% load static %}
 
 {% block head %}
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<!--    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">-->
     <link rel="stylesheet" type="text/css" href="{% static 'reviews/style.css' %}">
     <link href="{% static 'reviews/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'reviews/assets/css/fontawesome.css' %}">
@@ -62,8 +62,9 @@
                 <div>
                     <h2>
                         <a href="{% url 'reviews:detail' coffeeBar.id %}">{{ coffeeBar.name }}</a>
+                        <br>
                     </h2> 
-                    <div>
+                    <div class="coffee-bar-info">
                         <p class="address">Địa chỉ: {{ coffeeBar.address }}</p>
                         <p class="vote">Đánh giá: {{ coffeeBar.avg_vote }}</p>
                         <p class="summary">{{ coffeeBar.summary }}</p>

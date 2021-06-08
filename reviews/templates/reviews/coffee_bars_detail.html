@@ -4,7 +4,7 @@
 {% load static %}
 
 {% block head %}
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+<!--    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">-->
     <link rel="stylesheet" type="text/css" href="{% static 'reviews/style.css' %}">
     <link href="{% static 'reviews/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'reviews/assets/css/fontawesome.css' %}">
@@ -95,7 +95,7 @@
 
 
 <div id="review_id" class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
-	<h1 class="text-black font-bold">Nhận xét</h1>
+	<h1 class="text-black font-bold">Review</h1>
 		{% csrf_token %}
 		{% if reviews %}
 			{% for review in reviews %}
@@ -107,13 +107,13 @@
 				</div>
 			{% endfor %}
 		{% else %}
-        	<p>Không có nhận xét nào.</p>
+        	<p>There aren't any review.</p>
     {% endif %}
 </div>
 
  {% if auth.is_authenticated %}
 <div id="vote_id" class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
-<h1 class="text-black font-bold">Đánh giá</h1>
+<h1 class="text-black font-bold">Vote</h1>
 	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 	<form method="post">
         {% csrf_token %}
@@ -149,11 +149,11 @@
 
     </form>
     <div>
-        <button type="submit" class="btn button is-primary is-small" id="submit-btn-id">Gửi đánh giá</button>
+        <button type="submit" class="btn button is-primary is-small" id="submit-btn-id">Send review</button>
     </div>
 </div>
 {% else %}
-<p><a href="{% url 'reviews:login' %}">Đăng nhập</a> để đánh giá.
+<p><a href="{% url 'reviews:login' %}">Login</a> to review
 </p>
 {% endif %}
 

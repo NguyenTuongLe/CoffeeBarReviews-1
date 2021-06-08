@@ -1,4 +1,51 @@
-{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<!--    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">-->
+    <link rel="stylesheet" type="text/css" href="{% static 'reviews/style.css' %}">
+    <link href="{% static 'reviews/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'reviews/assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'reviews/assets/css/templatemo-sixteen.css' %}">
+    <link rel="stylesheet" href="assets/css/owl.css">
+
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand"><h2>Coffee Bar Review</h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'reviews:home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'reviews:home' %}">All Coffee Bars</a>
+                </li>
+                {% if auth.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link"><strong>{{ auth.first_name }} {{ auth.last_name }}</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reviews:logout' %}">Sign out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reviews:register' %}"><strong>Sign up</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reviews:login' %}">Log in</a>
+                    </li>
+                {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+{% endblock head %}
+
 
 {% block content %}
     <h1 class="title">Create an account</h1>

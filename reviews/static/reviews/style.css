@@ -1,8 +1,8 @@
 body{
-    max-width: 1200px;
-    margin: 40px auto;
-    padding: 32px;
-
+    max-width: 100%;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-family: 'Trebuchet MS, sans-serif';
 
      /*    background: linear-gradient(45deg,rgba(2,33,64,0.8) 55%,rgba(45,95,93,0.85)), url("images/background.jpeg") no-repeat;
      background: white;
@@ -16,6 +16,10 @@ body{
      grid-template-columns: repeat(2, 1fr);
      grid-column-gap: 5em;
 }  */
+
+.address, .vote, .summary{
+    line-height: 30px;
+}
 
 .shadow-2xl {
     max-width: 1050px;
@@ -107,7 +111,7 @@ h1{
 }
 
 .name {
-    font-size: 36px;
+    font-size: 32px;
 }
 
 .description{
@@ -123,6 +127,8 @@ h1{
 .price, .address, .vote, .summary, .coffee-bar-description, .user-name{
     font-size: 20px;
 }
+
+
 
 .comment {
      line-height: 40px;
