@@ -4,67 +4,70 @@
 {% load static %}
 
 {% block head %}
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'reviews/style.css' %}">
+    <link href="{% static 'reviews/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'reviews/assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'reviews/assets/css/templatemo-sixteen.css' %}">
+    <link rel="stylesheet" href="assets/css/owl.css">
+
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <a class="navbar-brand" href="coffee_bars.html"><h2>{{ coffee_bar.name }}</h2></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'reviews:home' %}">Home</a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link" href="#about_id">About Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#menu_id">Menu</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#review_id">Review</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#vote_id">Vote</a>
+              </li>
+              {% if auth.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link"><strong>{{ auth.first_name }} {{ auth.last_name }}</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reviews:logout' %}">Sign out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reviews:register' %}"><strong>Sign up</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reviews:login' %}">Log in</a>
+                    </li>
+                {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    
 {% endblock head %}
 
-<section class="header">
-    <nav class="bd-navbar navbar is-light" role="navigation" aria-label="main navigation">
-        <div class="container">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="{% url 'reviews:home' %}">
-                    <p class="title">Coffee Reviews</p>
-                </a>
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-                   data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-            <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-start">
-                    <a class="navbar-item" href="{% url 'reviews:home' %}">
-                        All coffee bars
-                    </a>
-                </div>
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        {% if auth.is_authenticated %}
-                            <div class="buttons">
-                                <a class="button is-light is-link is-small">
-                                    <strong>{{ auth.first_name }} {{ auth.last_name }}</strong>
-                                </a>
-                                <a class="button is-primary is-small" href="{% url 'reviews:logout' %}">
-                                    Sign out
-                                </a>
-                            </div>
-                        {% else %}
-                            <div class="buttons">
-                                <a class="button is-primary is-small" href="{% url 'reviews:register' %}">
-                                    <strong>Sign up</strong>
-                                </a>
-                                <a class="button is-light is-small" href="{% url 'reviews:login' %}">
-                                    Log in
-                                </a>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-    </div>
-</section>
 
 
 {% block content %}
 <div>
-    <img class="img-item" src="{{ coffee_bar.image.url }}" width="100px" height="auto">
+    {% comment %} <img class="img-item" src="{{ coffee_bar.image.url }}" width="100px" height="auto"> {% endcomment %}
     <h1>{{ coffee_bar.name }}</h1><br>
 </div>
 
 
-<div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
+<div id="about_id" class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
 	<div>
 		<p class="address">Địa chỉ: {{ coffee_bar.address }}</p>
 		<p class="vote">Đánh giá: {{ coffee_bar.avg_vote }}</p>
@@ -73,7 +76,7 @@
 </div>
 
 
- <div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
+ <div id="menu_id" class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
 	<h1 class="text-black font-bold">Menu</h1>
 		{% csrf_token %}
 		{% for menu in coffee_bar.menu_set.all %}
@@ -92,7 +95,7 @@
 </div>
 
 
-<div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
+<div id="review_id" class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
 	<h1 class="text-black font-bold">Nhận xét</h1>
 		{% csrf_token %}
 		{% if reviews %}
@@ -110,7 +113,7 @@
 </div>
 
  {% if auth.is_authenticated %}
-<div class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
+<div id="vote_id" class="shadow-2xl bg-white rounded-md mb-5 px-4 py-4">
 <h1 class="text-black font-bold">Đánh giá</h1>
 	{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 	<form method="post">

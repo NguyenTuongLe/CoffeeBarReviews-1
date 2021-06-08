@@ -3,57 +3,51 @@
 {% load static %}
 
 {% block head %}
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{% static 'reviews/style.css' %}">
+    <link href="{% static 'reviews/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'reviews/assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'reviews/assets/css/templatemo-sixteen.css' %}">
+    <link rel="stylesheet" href="assets/css/owl.css">
+
+    <header class="">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'reviews:home' %}">Home</a>
+                </li> 
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'reviews:home' %}">All Coffee Bars</a>
+                </li>
+                {% if auth.is_authenticated %}
+                    <li class="nav-item">
+                        <a class="nav-link"><strong>{{ auth.first_name }} {{ auth.last_name }}</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reviews:logout' %}">Sign out</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reviews:register' %}"><strong>Sign up</strong></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'reviews:login' %}">Log in</a>
+                    </li>
+                {% endif %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+    
 {% endblock head %}
 
-<section class="header">
-    <nav class="bd-navbar navbar is-light" role="navigation" aria-label="main navigation">
-        <div class="container">
-            <div class="navbar-brand">
-                <a class="navbar-item" href="{% url 'reviews:home' %}">
-                    <p class="title">Coffee Reviews</p>
-                </a>
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false"
-                   data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-            <div id="navbarBasicExample" class="navbar-menu">
-                <div class="navbar-start">
-                    <a class="navbar-item" href="{% url 'reviews:home' %}">
-                        All coffee bars
-                    </a>
-                </div>
-                <div class="navbar-end">
-                    <div class="navbar-item">
-                        {% if auth.is_authenticated %}
-                            <div class="buttons">
-                                <a class="button is-light is-link is-small">
-                                    <strong>{{ auth.first_name }} {{ auth.last_name }}</strong>
-                                </a>
-                                <a class="button is-primary is-small" href="{% url 'reviews:logout' %}">
-                                    Sign out
-                                </a>
-                            </div>
-                        {% else %}
-                            <div class="buttons">
-                                <a class="button is-primary is-small" href="{% url 'reviews:register' %}">
-                                    <strong>Sign up</strong>
-                                </a>
-                                <a class="button is-light is-small" href="{% url 'reviews:login' %}">
-                                    Log in
-                                </a>
-                            </div>
-                        {% endif %}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </nav>
-    </div>
-</section>
+
 
 {% block content %}
     {% if list %}
