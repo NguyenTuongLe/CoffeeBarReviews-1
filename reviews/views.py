@@ -29,15 +29,14 @@ def coffee_bars_detail(request, coffee_bar_id):
             rating = form.cleaned_data['rating']
             r = Review(author=request.user, coffee_bar=coffee_bar, vote=rating, description=description)
             r.save()
-
-            count = 1
-            voted = float(rating)
+            count = 0
+            voted = 0
             for review in reviews:
                 voted += review.vote
                 count += 1
-            coffee_bar.avg_vote = round(voted / count, 1)
+            coffee_bar.avg_vote = round((voted / count), 1)
             coffee_bar.save()
-            reviews = Review.objects.filter(coffee_bar__id=coffee_bar_id)
+
     else:
         form = ReviewForm()
 

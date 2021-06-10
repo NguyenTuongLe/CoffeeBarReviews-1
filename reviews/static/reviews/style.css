@@ -230,12 +230,11 @@ margin-left: 400px;
 #id_username, #id_password {
     margin: 20px 30px;
  /*   border:none;*/
-	padding:15px 20px;
+	padding:5px 8px;
 	/*border-radius:25px;*/
 	background:rgba(255,255,255,.1);
 	color: #265077;
 	font-weight: 700;
-	font-size: 18px;
 	font-variant: inherit;
 	margin-bottom: -20%;
 
@@ -264,7 +263,7 @@ margin-left: 400px;
 
 #id_first_name, #id_last_name, #id_email, #id_password1, #id_password2 {
     margin: 20px 30px;
-    padding: 16px 40px;
+    padding: 5px 8px;
     	color: #265077;
 	font-weight: 700;
     background:rgba(255,255,255,.1);
