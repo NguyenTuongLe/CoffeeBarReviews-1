@@ -21,7 +21,7 @@ def coffee_bars_list_view(request):
 # coffee bars detail
 def coffee_bars_detail(request, coffee_bar_id):
     coffee_bar = get_object_or_404(CoffeeBar, pk=coffee_bar_id)
-    reviews = coffee_bar.review_set.all()
+    reviews = Review.objects.filter(coffee_bar__id=coffee_bar_id)
     if request.method == 'POST':
         form = ReviewForm(request.POST)
         if form.is_valid():
@@ -31,13 +31,13 @@ def coffee_bars_detail(request, coffee_bar_id):
             r.save()
 
             count = 1
-            voted = int(rating)
+            voted = float(rating)
             for review in reviews:
                 voted += review.vote
                 count += 1
             coffee_bar.avg_vote = round(voted / count, 1)
             coffee_bar.save()
-
+            reviews = Review.objects.filter(coffee_bar__id=coffee_bar_id)
     else:
         form = ReviewForm()
 
