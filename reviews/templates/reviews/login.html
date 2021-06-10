@@ -33,15 +33,19 @@
                         <a class="nav-link" href="{% url 'reviews:logout' %}">Sign out</a>
                     </li>
                 {% else %}
-                    <li class="nav-item">
+
+                 <li class="nav-item">
                         <a class="nav-link" href="{% url 'reviews:register' %}"><strong>Sign up</strong></a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'reviews:login' %}">Log in</a>
                     </li>
+
+
                 {% endif %}
             </ul>
           </div>
+
         </div>
       </nav>
     </header>
@@ -67,8 +71,10 @@
             </div>
         {% endif %}
         {% for field in form %}
-            <div class="field">
-                <label class="label is-small">
+        <div class="login-form">
+            <div class="">
+                <div class="login-field">
+                <label id="id_username" class="label is-small">
                     {{ field.label_tag }}
                 </label>
                 <div class="control">
@@ -80,11 +86,14 @@
                 {% for error in field.errors %}
                     <p class="help is-danger">{{ error }}</p>
                 {% endfor %}
-            </div>
+
+             </div>
+           </div>
         {% endfor %}
-        <div class="field is-grouped">
-            <div class="control">
-                <button type="submit" class="button is-primary is-small">Sign In</button>
+            <div class="field is-grouped">
+                <div class="control">
+                <button type="submit" id="btn" class="btn button is-primary is-small">Sign In</button>
+                </div>
             </div>
         </div>
     </form>
