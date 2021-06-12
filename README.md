@@ -53,16 +53,73 @@ Username: admin
 
 Password: admin
 
-<h1 align="center"><img src="./image/admin.png" alt="admin" width="600px">
-</h1>
+### Site Admin 
+
+<h1 align="center"><img src="./image/admin.png" alt="admin" width="600px"></h1>
+
+### User
+
+<h1 align="center"><img src="./image/admin_user.png" alt="admin_user" width="600px"></h1>
+
+### Coffee Bar
+
+<h1 align="center"><img src="./image/admin_coffeebar.png" alt="admin_coffeebar" width="600px"></h1>
+
+### Review
+
+<h1 align="center"><img src="./image/admin_review.png" alt="admin_review" width="600px"></h1>
 
 ## Trang review
 
 http://127.0.0.1:8000/reviews/
 
+### Trang chủ
 
+<h1 align="center"><img src="./image/homepage1.png" alt="homepage" width="600px"></h1>
 
+### Detail
 
+<h1 align="center"><img src="./image/detail1.png" alt="detail" width="600px"></h1>
+
+<h1 align="center"><img src="./image/detail2.png" alt="detail" width="600px"></h1>
+
+<h1 align="center"><img src="./image/detail3.png" alt="detail" width="600px"></h1>
+
+<h1 align="center"><img src="./image/detail4.png" alt="detail" width="600px"></h1>
+
+### Đăng ký
+
+<h1 align="center"><img src="./image/register1.png" alt="register" width="600px"></h1>
+
+<h1 align="center"><img src="./image/register2.png" alt="register" width="600px"></h1>
+
+### Đăng nhập
+
+<h1 align="center"><img src="./image/login1.png" alt="login" width="600px"></h1>
+
+<h1 align="center"><img src="./image/login2.png" alt="login" width="600px"></h1>
+
+### Vote và review
+
+Ban đầu quán The Coffee House có lượt vote trung bình là 5 sao.
+
+<h1 align="center"><img src="./image/homepage1.png" alt="homepage" width="600px"></h1>
+
+Ta thêm 1 đánh giá 4 sao và nhấn Send review.
+
+<h1 align="center"><img src="./image/vote1.png" alt="vote" width="600px"></h1>
+
+Lượt vote trung bình của quán The Coffee House đã thành 4.8 sao
+
+<h1 align="center"><img src="./image/vote2.png" alt="vote" width="600px"></h1>
+
+Comment ta vừa gửi đã được hiển thị vào phần review quán.
+
+<h1 align="center"><img src="./image/vote3.png" alt="vote" width="600px"></h1>
+
+Ở ngoài trang chủ, lượt vote trung bình quán The Coffe House cũng đã thành 4.8 sao.
+
+<h1 align="center"><img src="./image/vote4.png" alt="vote" width="600px"></h1>
 
 
 
