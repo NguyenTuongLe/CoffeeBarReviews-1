@@ -53,9 +53,16 @@ Username: admin
 
 Password: admin
 
+<h1 align="center"><img src="./image/admin.png" alt="admin" width="600px">
+</h1>
+
 ## Trang review
 
 http://127.0.0.1:8000/reviews/
+
+
+
+
 
 
 
