@@ -1,8 +1,4 @@
-﻿# Tên sản phẩm và các chức năng chính
-
-## Tên sản phẩm: Coffee Bar Review
-
-## Chức năng
+﻿# Coffee Bar Review
 
 Coffee Bar Review là 1 ứng dụng để khách hàng có thể tạo tài khoản, đăng nhập và đánh giá các quán cafe. 
 
@@ -12,13 +8,13 @@ Khách hàng có thể vào trang web để xem thông tin quán, menu quán và
 
 Ứng dụng được viết bằng Django, dễ dàng cài đặt trên cả Window và MacOS, giao diện trực quan dễ sử dụng.
 
-### Quản trị viên
+## Quản trị viên
 
 Đưa thông tin của các quán cafe lên trang web (tên, mô tả, địa chỉ, ảnh, menu).
 
 Quản trị viên sẽ cho hiển thị lên đầu trang web các quán được đánh giá cao hơn. 
 
-### Khách hàng
+## Khách hàng
 
 Khách hàng có thể vào xem thông tin quán và đánh giá (từ 1 đến 5 sao) và có thể để lại feedback. 
 
@@ -34,6 +30,10 @@ Thành viên:
 * Phạm Thị Uyên 18CNTT4
 * Hồ Thị Thanh Huyền 18CNTT4
 * Trần Nhật Duy 18CNTT2
+
+# Database
+
+<h1 align="center"><img src="./image/database.png" alt="database" width="600px"></h1>
 
 # Hướng dẫn sử dụng
 
